@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://code.jquery.com/jquery-2.0.0.js"></script>
+</head>
+<body>
+
+<script>
+
+    //    alter table `` drop foreign key
+    //    $.ajax({
+    //        url: '../app_dev.php/test1',
+    //        headers: {'x-username': 'spang', 'x-password': 'p@ssword'}
+    //    });
+    //
+    //    $.ajax({
+    //        url: '../app_dev.php/users/secured',
+    //        headers: {'x-username': 'testuser1', 'x-password': 'p@ssword1'}
+    //    });
+    //
+    //    $.ajax({
+    //        url: '../app_dev.php/users/secured',
+    //        headers: {'x-username': 'testuser', 'x-password': 'p@ssword'}
+    //    });
+
+
+    //1: 16-7 ok add user theo post
+    // obsolete
+    //                var  formData = "user=null&username=chau2&fname=chau2&lname=tran2&email=tranchau2@gmail.com&password=1234567&companyname=Phoenix Contact Singapore1";
+    //    var formData = '{"user":{"username":"foo", "email": "foo@example.org", "password":"hahaha"}}';
+    var formData = '{"organisation":{"id":"1", "name": "Sunrise Solutions", "handbook": {"id": "1"}}}';
+    $.ajax({
+//        url: '../app_dev.php/users?search=user.username:binh,user.age>20&sort=user.firstName:asc,user.lastName:desc',
+//        url: '../app_dev.php/users?search=user.username:%test%,&sort=user.firstName:asc,user.lastName:desc',
+        url:'https://api.sg-benefits.com/organisations/1',
+        headers: {'x-username': 'admin@next5admin.com', 'x-password': 'password'},
+        contentType: 'application/json',
+        type: "GET",
+        data: formData,
+        success: function (data, textStatus, jsXHR) {
+            //data- response from server
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+        }
+    });
+    //        url: '../app_dev.php/users/secured',
+    //        headers: {'x-username': 'testuser', 'x-password': 'p@ssword'}
+    //    });
+
+    //2: 16-7 ok xem get user
+    //            var  formData = "email=test-get-single-user";
+    //            $.ajax({
+    ////                url: '../app_dev.php/users/testuser',
+    //                url: "http://localhost/projects/apps/api/web/app_dev.php/users?page=2&limit=2",
+    //                headers: { 'x-username': 'test@example.com','x-password': 'p@ssword' },
+    //                type: "GET",
+    //                data: formData
+    //            });
+    //handbooks/1
+    //    var  formData = "note=handbook-retrieval-controller-testing-id-1";
+    //    $.ajax({
+    //        url: '../app_dev.php/handbooks/1',
+    //        headers: { 'x-username': 'test@example.com', 'x-password': 'p@ssword' },
+    //        type: "GET",
+    //        dataType: "json",
+    //        data: formData,
+    //        success: function(data) {
+    //            alert(11);
+    //        }
+    //    });
+
+    //    $.ajax({
+    //        url: '../test/test.php',
+    //                headers: { 'x-username': 'test@example.com', 'x-password': 'p@ssword' },
+    //        type: "GET",
+    //        data: formData,
+    //        dataType: "json",
+    //
+    //    }).done(function( data ) {
+    //        alert("test");
+    //    });
+    //ok 3: update fname,lname theo email admin@next5admin.com
+    //        var  formData = "user_name=chau2122&fname=chau222&lname=tran22&email=tranchau2@gmail.com&password=1234567&companyname=Phoenix Contact Singapore";
+    //                $.ajax({
+    //                   url: 'app_dev.php/user/admin@next5admin.com',
+    //                   headers: { 'x-username': 'admin@next5admin.com','x-password': 'password' },
+    //                   type: "PUT",
+    //                    data: formData,
+    //                    success: function(data,textStatus,jsXHR){
+    //                        //data- response from server
+    //                    },
+    //                    error: function (jqXHR, textStatus, errorThrown) {
+    //                    }
+    //                });
+
+    //ok 4: 16-7 xoa voi email
+
+    //        var  formData = "email=tranchau2@gmail.com";
+    //        $.ajax({
+    //            url: 'app_dev.php/user/admin@next5admin.com',
+    //            headers: { 'x-username': 'admin@next5admin.com','x-password': 'password' },
+    //            type: "DELETE",
+    //            data: formData
+    //        });
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
