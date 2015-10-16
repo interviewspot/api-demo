@@ -8,67 +8,18 @@ QUnit.test("CRUD " + core_user_user, function (assert) {
         'x-username': Setting.username,
         'x-password': Setting.password
     });
-    //a.navigate(['organisations']);
-    //a.get(function (response) {
-    //    var obj = response.getValue();
-    //    console.log('first');
-    //    console.log(obj);
-    //    console.log(response.isOk());
 
-    //
-    //a.navigate([{
-    //    'id': 2
-    //},'self','medium.logo.update']);
-    //
-    //a.get(function (response1) {
-    //    var obj = response1.getValue();
-    //    console.log('hello');
-    //    console.log(obj);
-    //});
-    //
-    //});
-
-    var data_organisation = {
-        "admin_user": "", //id of user
-        "parent": "", //id of parent
-        "location": "", //id of location
-        "logo": "", //id of logo
-        "name": "1",
-        "code": Math.floor(Date.now() / 1000),
-        "reg_no": "1",
-        "head_office_no": "1",
-        "office_address": "1",
-        "billing_address": "1",
-        "reservation_email": "1",
-        "user_contact_no": "1",
-        "client_since": "2015-01-01 10:10:10",
-        "office_hours": "1",
-        "redemption_password": "1",
-        "about_company": "1",
-        "slogan": "our slango",
-        "facebook_link": "https://www.facebook.com/peterbean",
-        "linked_in_link": "",
-        "account_name": "binhle" + Math.floor(Date.now() / 1000),
-        "qr_code": "https://qrcode.org/code1"
+    var data_user = {
+        "email": "admin@" + Math.floor(Date.now() / 1000) + ".com", //unique
+        "code": "code_" + Math.floor(Date.now() / 1000),
+        "firstName": "",
+        "middleName": "",
+        "lastName": "",
+        "username": "admin",//unique
+        "ssn": "1",
+        "enabled": "1" //1 or 0
     };
-
-    var data_handbook = {
-        "title": "My Title",
-        "year": "2015",
-        "description": "",
-        "version": "1",
-        "organisation": "TO-BE-UPDATED" //id of organisation
-    };
-
-    var data_section1 = {
-        "version": "",
-        "title": "My Section's title",
-        "active": "1", //1 or 0
-        "description": "", //
-        "parent": "", //id of section is parent of this section
-        "handbook": "TO-BE-UPDATED" //id of handbook
-    };
-
+    //"plainPassword": "1",
     a.navigate(['organisations.post']);
     post_data = {organisation: data_organisation};
     put_data = JSON.parse(JSON.stringify(post_data)); //post_data.slice(0);
@@ -115,8 +66,8 @@ QUnit.test("CRUD " + core_user_user, function (assert) {
                 });
                 // we don't need to add anything else,
                 // deleting a section will also delete its subsections.
-                API.testCRUD(d, organisation_handbook_subsection, post_data, put_data, undefined, delSec,assert);
-            }, delHb,assert);
+                API.testCRUD(d, organisation_handbook_subsection, post_data, put_data, undefined, delSec, assert);
+            }, delHb, assert);
         }, delOrg, assert);
     }, undefined, assert, done);
 })
