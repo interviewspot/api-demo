@@ -75,6 +75,7 @@ QUnit.test("CRUD " + organisation_organisation, function (assert) {
 
     a.navigate(['organisations.post']);
     post_data = {organisation: data_organisation};
+    post_data.organisation.admin_user = 1;
     put_data = JSON.parse(JSON.stringify(post_data)); //post_data.slice(0);
     put_data.organisation.reg_no = 'hello motor update';
     // OneToOne One Organisation only has one handbook
@@ -119,8 +120,8 @@ QUnit.test("CRUD " + organisation_organisation, function (assert) {
                 });
                 // we don't need to add anything else,
                 // deleting a section will also delete its subsections.
-                API.testCRUD(d, organisation_handbook_subsection, post_data, put_data, undefined, delSec,assert);
-            }, delHb,assert);
+                API.testCRUD(d, organisation_handbook_subsection, post_data, put_data, undefined, delSec, assert);
+            }, delHb, assert);
         }, delOrg, assert);
     }, undefined, assert, done);
 })

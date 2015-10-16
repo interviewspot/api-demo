@@ -81,6 +81,7 @@ var
                 } else {
                     console.log('cannot post to', entity, addition);
                     console.log('debug data', post_data);
+                    assert.notEqual(addition.isOk(), true, 'adding failed for entity '+entity);
                 }
             }, post_data);
 
