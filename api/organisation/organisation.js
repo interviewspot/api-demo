@@ -1,14 +1,13 @@
 var organisation_organisation = 'organisation/organisation';
+var organisation_handbook_handbook = 'organisation/handbook/handbook';
+var organisation_handbook_section = 'organisation/handbook/section';
+var organisation_handbook_subsection = 'organisation/handbook/SUBsection';
 
-QUnit.test("hello test", function (assert) {
-    assert.ok(1 == "1", organisation_organisation + ".js");
+
+QUnit.test("CRUD " + organisation_organisation, function (assert) {
+    console.log('testing ' + organisation_organisation + ".js");
+
     var done = assert.async();
-    //API.process(API.GET, '', '/benefit', function (result) {
-    //    console.log('Method: ' + API.GET);
-    //    console.log('Result: ' + result);
-    //    done();
-    //});
-
     var a = new HttpAgent(Setting.url + Setting.app, {
         'x-username': Setting.username,
         'x-password': Setting.password
@@ -33,26 +32,96 @@ QUnit.test("hello test", function (assert) {
     //
     //});
 
-    var data = {
-        "adminUser": "", //id of user
+    var data_organisation = {
+        "admin_user": "", //id of user
         "parent": "", //id of parent
         "location": "", //id of location
         "logo": "", //id of logo
         "name": "1",
-        "code": "12345678",
-        "regNo": "1",
+        "code": Math.floor(Date.now() / 1000),
+        "reg_no": "1",
         "head_office_no": "1",
-        "officeAddress": "1",
-        "billingAddress": "1",
-        "reservationEmail": "1",
-        "userContactNo": "1",
+        "office_address": "1",
+        "billing_address": "1",
+        "reservation_email": "1",
+        "user_contact_no": "1",
         "client_since": "2015-01-01 10:10:10",
-        "officeHours": "1",
-        "redemptionPassword": "1",
-        "aboutCompany": "1"
+        "office_hours": "1",
+        "redemption_password": "1",
+        "about_company": "1",
+        "slogan": "our slango",
+        "facebook_link": "https://www.facebook.com/peterbean",
+        "linked_in_link": "",
+        "account_name": "binhle" + Math.floor(Date.now() / 1000),
+        "qr_code": "https://qrcode.org/code1"
     };
+
+    var data_handbook = {
+        "title": "My Title",
+        "year": "2015",
+        "description": "",
+        "version": "1",
+        "organisation": "TO-BE-UPDATED" //id of organisation
+    };
+
+    var data_section1 = {
+        "version": "",
+        "title": "My Section's title",
+        "active": "1", //1 or 0
+        "description": "", //
+        "parent": "", //id of section is parent of this section
+        "handbook": "TO-BE-UPDATED" //id of handbook
+    };
+
     a.navigate(['organisations.post']);
-    a.post(function(res){console.log(res);},{organisation: data});
+    post_data = {organisation: data_organisation};
+    put_data = JSON.parse(JSON.stringify(post_data)); //post_data.slice(0);
+    put_data.organisation.reg_no = 'hello motor update';
+    // OneToOne One Organisation only has one handbook
+    // delOrg is a cb function that delete the Org entity after the Handbook has been created
+    API.testCRUD(a, organisation_organisation, post_data, put_data, function (res, delOrg) {
+        var post_data = {handbook: data_handbook};
+        var objOrg = res.getValue();
+        post_data.handbook.organisation = objOrg.id;
 
+        var put_data = JSON.parse(JSON.stringify(post_data)); //post_data.slice(0);
+        put_data.handbook.title = 'New title updated';
+        var b = new HttpAgent(objOrg['_links']['handbook.post']['href'], {
+            'x-username': Setting.username,
+            'x-password': Setting.password
+        });
+        // delHb is a cb function that delete the Handbook entity after the Section has been created
+        API.testCRUD(b, organisation_handbook_handbook, post_data, put_data, function (res, delHb) {
+            var post_data = {section: data_section1};
+            var objHb = res.getValue();
+            post_data.section.handbook = objHb.id;
 
-});
+            var put_data = JSON.parse(JSON.stringify(post_data));
+            put_data.section.title = 'New title updated';
+            var c = new HttpAgent(objHb['_links']['sections.post']['href'], {
+                'x-username': Setting.username,
+                'x-password': Setting.password
+            });
+            // delSec is a cb function that delete the Section entity after the SUBsection has been created
+            API.testCRUD(c, organisation_handbook_section, post_data, put_data, function (res, delSec) {
+                var post_data = {section: data_section1};
+                var objSec = res.getValue();
+                post_data.section.title = 'My Subsection\'s title';
+                post_data.section.handbook = objHb.id;
+                post_data.section.parent = objSec.id;
+
+                var put_data = JSON.parse(JSON.stringify(post_data));
+                put_data.section.title = 'New title updated';
+
+                var d = new HttpAgent(objSec['_links']['sections.post']['href'], {
+                    'x-username': Setting.username,
+                    'x-password': Setting.password
+                });
+                // we don't need to add anything else,
+                // deleting a section will also delete its subsections.
+                API.testCRUD(d, organisation_handbook_subsection, post_data, put_data, undefined, delSec,assert);
+            }, delHb,assert);
+        }, delOrg, assert);
+    }, undefined, assert, done);
+})
+;
