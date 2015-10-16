@@ -1,7 +1,3 @@
-var username = "testuser";
-var password = "p@ssword";
-var url = "http://localhost/projects/apps/api/web/app_dev.php";
-
 var
     Setting = {
         username: "testuser",
