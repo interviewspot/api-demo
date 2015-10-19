@@ -73,6 +73,7 @@ QUnit.test("CRUD " + organisation_organisation, function (assert) {
         "handbook": "TO-BE-UPDATED" //id of handbook
     };
 
+    a.navigate(['sgbenefit']);
     a.navigate(['organisations.post']);
     post_data = {organisation: data_organisation};
     post_data.organisation.admin_user = 1;

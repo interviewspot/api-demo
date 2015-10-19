@@ -21,8 +21,9 @@
     //    url = 'http://localhost/projects/apps/api/web/app_dev.php/api/providers/sonata.media.provider.image/media';
     //    url = 'https://api.sg-benefits.com/api/providers/sonata.media.provider.image/media';
     //    url = 'http://localhost/projects/apps/api/web/app_dev.php/media/25';
-
+    //url = 'https://api.sg-benefits.com/media/sonata.media.provider.image/media';
     url = 'http://localhost/projects/apps/api/web/app_dev.php/media/sonata.media.provider.image/media';
+    //url = 'http://localhost/projects/apps/api/web/app_dev.php/media/sonata.media.provider.image/media';
     var myapp = angular.module('demo', [
         'blueimp.fileupload'
     ])
