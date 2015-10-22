@@ -1,0 +1,1 @@
+loadScript('promotion.js');

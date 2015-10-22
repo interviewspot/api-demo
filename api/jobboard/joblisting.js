@@ -22,7 +22,7 @@ QUnit.test("CRUD " + jobboard_joblisting, function (assert) {
         "location": "", //id of location
         //"salary_from": "1", //id of salary_from
         //"salary_to": "1",
-        "job_type": "1",
+        "type": "1",
         "visibility": "1"
         //todo tags are missing
     };
