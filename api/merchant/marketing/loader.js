@@ -1,3 +1,1 @@
-/**
- * Created by mayxachtayvn on 10/21/2015.
- */
+loadScript('merchant/marketing/promotion.js');

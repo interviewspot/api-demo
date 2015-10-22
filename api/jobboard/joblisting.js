@@ -20,8 +20,8 @@ QUnit.test("CRUD " + jobboard_joblisting, function (assert) {
         //"owner": "", //id of user
         "organisation": "1",
         "location": "", //id of location
-        //"salary_from": "1", //id of salary_from
-        //"salary_to": "1",
+        "salary_from": "1", //id of salary_from
+        "salary_to": "1",
         "type": "1",
         "visibility": "1"
         //todo tags are missing
