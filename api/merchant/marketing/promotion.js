@@ -24,11 +24,20 @@ QUnit.test("CRUD " + merchant_marketing_promotion, function (assert) {
         "estimated_value":"12.5",
         "discount_amount":"",
         "active":"true",
-        "tags":[{"label":"tag 1"}]
-        //"owner": "", //id of user
+        "tags":{"tag1":{"name":"tag 1"},"tag2":{"name":"tag 2"}}
+        //"owner": "", //id of org
 
     };
-
+    /**
+     {"benefit":{"promotion":1,
+"organisation":22
+}}
+     ------------------------------------
+     {"benefit":{"promotion":1,
+"organisation":22,
+"beneficiaries":[1,3,4]
+}}
+     */
     a.navigate(['sgbenefit']);
     a.navigate(['promotions.post']);
     post_data = {promotion: data_promotion};
