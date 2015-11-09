@@ -2,7 +2,7 @@ var
     Setting = {
         username: "testuser",
         //username: "kenneth.yap@ap.magenta-consulting.com",
-        password: "p@ssword",
+        password: "123456789",
         url: "http://localhost/projects/apps/api/web/app_dev.php",
         //url: 'https://api.sg-benefits.com',
         app: '/sgbenefit',
