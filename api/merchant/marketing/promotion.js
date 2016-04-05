@@ -38,7 +38,7 @@ QUnit.test("CRUD " + merchant_marketing_promotion, function (assert) {
 "beneficiaries":[1,3,4]
 }}
      */
-    a.navigate(['sgbenefit']);
+    a.navigate(['sgbeneefit']);
     a.navigate(['promotions.post']);
     post_data = {promotion: data_promotion};
     //post_data.listing.admin_user = 1;

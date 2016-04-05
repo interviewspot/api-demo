@@ -32,6 +32,16 @@ QUnit.test("CRUD " + organisation_organisation, function (assert) {
     //
     //});
 
+
+    //{"position":{
+    //    "employer": 6,
+    //        "employee": 20,
+    //        "enabled": true,
+    //        "handbook_contact": false,
+    //        "employee_classes": {"tag1": {"name": "tag emp_class 1"}, "tag2": {"name": "tag emp_class 2"}}
+    //}}
+
+
     var data_organisation = {
         "admin_user": "", //id of user
         "parent": "", //id of parent
@@ -63,6 +73,7 @@ QUnit.test("CRUD " + organisation_organisation, function (assert) {
         "version": "1",
         "organisation": "TO-BE-UPDATED" //id of organisation
     };
+    var data_section2 = '{"section":{"description":"description content is here","title":"FOREWORD","version":"1","handbook":"4","parent":null,"locale":"en_us","enabled":true}}';
 
     var data_section1 = {
         "version": "",

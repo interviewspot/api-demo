@@ -456,7 +456,8 @@
             console.log('/js/jquery.fileupload.js:455 set username,password');
             console.log(options);
             //options.username = 'kenneth.yap@ap.magenta-consulting.com';
-            options.username = 'testuser';
+            options.username = 'ken.loy@sg.magenta-consullting.com',
+            //options.username = 'testuser';
             options.password = 'p@ssword';
             //options.method = 'PUT';
 

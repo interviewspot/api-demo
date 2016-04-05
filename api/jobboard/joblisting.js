@@ -27,6 +27,22 @@ QUnit.test("CRUD " + jobboard_joblisting, function (assert) {
         //todo tags are missing
     };
 
+    /**
+     {"intro_video_gallery":{
+   "name": "test gallery 1",
+   "context": "default",
+   "enabled":1,
+   "default_format": "default_medium",
+   "gallery_has_medias":{
+   "galleryhasmedia1":{
+   "media":158,
+   "position":1,
+   "enabled":1
+   }
+   }
+   }}
+     */
+
     a.navigate(['inspot']);
     a.navigate(['job_listing.post']);
     post_data = {listing: data_joblisting};
