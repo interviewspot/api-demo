@@ -74,7 +74,8 @@ QUnit.test("CRUD " + organisation_organisation, function (assert) {
         "organisation": "TO-BE-UPDATED" //id of organisation
     };
     var data_section2 = '{"section":{"description":"description content is here","title":"FOREWORD","version":"1","handbook":"4","parent":null,"locale":"en_us","enabled":true}}';
-
+// <p class="fimg"><img src="https://lh3.googleusercontent.com/-ETxNlzHKOtw/VlKPjaNM0bI/AAAAAAAAAkg/lnW5sXf-B4s/s2048-Ic42/11.1.jpg"/><br/></p>
+    var data_content = '{"content": {    "title":"Section 11.1 Image",         "image_id":"5",         "html_text":null,         "enabled":"1",         "section":"1",         "parent":null,         "locale":"en_us" }}'
     var data_section1 = {
         "version": "",
         "title": "My Section's title",

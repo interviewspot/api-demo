@@ -23,7 +23,7 @@
     //    url = 'http://localhost/projects/apps/api/web/app_dev.php/media/25';
     //url = 'https://api.sg-benefits.com/media/sonata.media.provider.image/media';
     //url = 'https://api.sg-benefits.com/media/sonata.media.provider.file/media';
-    url = 'http://localhost/projects/apps/api/web/app_dev.php/joblistings/1/jobcandidates/1/candidateinterviews/5/answers/13/videos';
+    url = Setting.url;//'http://localhost/projects/apps/api/web/app_dev.php/joblistings/1/jobcandidates/1/candidateinterviews/5/answers/13/videos';
     //url = 'http://localhost/projects/apps/api/web/app_dev.php/media/sonata.media.provider.image/media';
     var myapp = angular.module('demo', [
         'blueimp.fileupload'
@@ -72,8 +72,8 @@
                     url : url,
                     headers: {
                         //"x-username" : 'kenneth.yap@ap.magenta-consulting.com',
-                        "x-username" : 'ken.loy@sg.magenta-consullting.com',
-                        "x-password" : 'p@ssword'
+                        "x-username" : Setting.username, //'ken.loy@sg.magenta-consullting.com',
+                        "x-password" : Setting.password //'p@ssword'
                     }
                 };
 
